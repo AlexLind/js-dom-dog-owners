@@ -51,6 +51,15 @@ const createDogCardDesc = (bio, isGoodDog) => {
     const textBottom = document.createElement('p')
     bottomSection.append(textBottom)
     const button = document.createElement('button')
+    button.addEventListener('click', () => {
+        if (isGoodDog) {
+            textBottom.innerHTML = '<em>Is naughty?</em> yes!'
+            button.innerHTML = 'Bad Dog!' 
+        } else {
+            textBottom.innerHTML = '<em>Is naughty?</em> no!'
+            button.innerHTML = 'Good Dog!'
+        }
+    })    
     if (isGoodDog) {
         textBottom.innerHTML = '<em>Is naughty?</em> no!'
         button.innerHTML = 'Good Dog!'
