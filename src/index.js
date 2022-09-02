@@ -25,6 +25,7 @@ const createSectionImage = () => {
 }
 
 const createDogCard = () => {
+    myMainSection.innerHTML = ""
     const section = createSection()
     const header = createSectionHeader()
     const image = createSectionImage()
