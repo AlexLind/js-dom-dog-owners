@@ -1,8 +1,84 @@
 // WRITE YOUR CODE BELOW!
 const myHeaderUnorderedList = document.querySelector('.dogs-list')
 const myMainSection = document.querySelector('.main')
+const myHeaderAddButton = document.querySelector('.dogs-list__button--add')
+myHeaderAddButton.addEventListener('click', () => {
+    clearScreen()
+    addForm()
+    console.log('plus clicked')
+})
+
+const addForm = () => {
+  const section = createSection()
+  const header = createSectionHeader('Add a new Dog')
+  const form = document.createElement('form')
+  form.setAttribute('class', 'form')
+  form.addEventListener('submit', (event) => {
+    event.preventDefault()
+    console.log('Dog added', nameInput.value)
+    data.unshift({
+        id: 'created by user',
+        name: nameInput.value,
+        bio: bioInput.value,
+        isGoodDog: true,
+        image: imgInput.value
+    })
+    // myHeaderUnorderedList.removeChild(0)
+    myHeaderUnorderedList.innerHTML = ''
+    renderDogList()
+    console.log('dog added success')
+  })
+    const labelName = document.createElement('label')
+    labelName.setAttribute('for', 'name')
+    labelName.innerHTML = "Dog's name"
+    form.append(labelName)
+
+    const nameInput = document.createElement('input')
+    nameInput.setAttribute('type', 'text')
+    nameInput.setAttribute('id', 'name')
+    nameInput.setAttribute('name', 'name')
+    nameInput.innerHTML = "Dog's name"
+    form.append(nameInput)
+
+    const labelImage = document.createElement('label')
+    labelImage.setAttribute('for', 'image')
+    labelImage.innerHTML = "Dog's picture"
+    form.append(labelImage)
+
+    const imgInput = document.createElement('input')
+    imgInput.setAttribute('type', 'url')
+    imgInput.setAttribute('id', 'image')
+    imgInput.setAttribute('name', 'image')
+    imgInput.innerHTML = "Dog's name"
+    form.append(imgInput)
+
+    const labelBio = document.createElement('label')
+    labelBio.setAttribute('for', 'image')
+    labelBio.innerHTML = "Dog's bio"
+    form.append(labelBio)
+
+    const bioInput = document.createElement('textarea')
+    bioInput.setAttribute('rows', '5')
+    bioInput.setAttribute('id', 'bio')
+    bioInput.setAttribute('name', 'bio')
+    form.append(bioInput)
+
+    const submitForm = document.createElement('input')
+    submitForm.setAttribute('type', 'submit')
+    submitForm.setAttribute('id', 'submit')
+    submitForm.setAttribute('name', 'submit')
+    submitForm.setAttribute('value', "Let's add a dog!")
+    submitForm.setAttribute('class', "form__button")
+    form.append(submitForm)
 
 
+  section.append(header, form)
+  return form
+}
+
+const clearScreen = () => {
+    myMainSection.innerHTML = ""
+}
 
 
 const createSection = () => {
@@ -25,8 +101,7 @@ const createSectionImage = (imageSource) => {
 }
 
 const createDogCard = (dog) => {
-    console.log(dog)
-    myMainSection.innerHTML = ""
+    clearScreen()
     const section = createSection()
     const header = createSectionHeader(dog.name)
     const image = createSectionImage(dog.image)
@@ -71,7 +146,8 @@ const createDogCardDesc = (bio, isGoodDog) => {
     return cardDesc
 }
 
-for (const dog of data) {
+const renderDogList = () => {
+  for (const dog of data) {
    const li = document.createElement('li')
    li.innerHTML = dog.name
    li.setAttribute('class', 'dogs-list__button')
@@ -79,6 +155,7 @@ for (const dog of data) {
     createDogCard(dog)
    })
    myHeaderUnorderedList.append(li)
-}
+}}
 
+renderDogList()
 

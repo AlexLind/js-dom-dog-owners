@@ -41,7 +41,7 @@ img {
 
 .dogs-list {
   display: grid;
-  grid-auto-columns: 150px;
+  grid-auto-columns: 100px;
   grid-auto-flow: column;
   column-gap: 10px;
 
@@ -77,12 +77,11 @@ img {
 .dogs-list__button {
   display: grid;
   place-content: center;
-  width: 100%;
-
+  width: auto;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
 
-  padding: 1rem;
+  padding: 0.5rem;
 
   border: 1px solid var(--white);
   border-radius: 10px;
@@ -99,7 +98,14 @@ img {
 }
 
 .dogs-list__button--add {
+  display: flexbox;
+  width: fit-content;
   font-size: 3rem;
+  padding: 1rem;
+  margin-left: 16px;
+  border: 1px solid var(--white);
+  border-radius: 10px;
+  list-style-type: none;
 }
 
 .main__dog-section h2 {
